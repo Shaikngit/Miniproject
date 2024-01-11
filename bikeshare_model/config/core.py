@@ -44,7 +44,7 @@ class ModelConfig(BaseModel):
     unused_fields: List[str]
     weekdayimputer_var: str 
     weathersitimputer_var:str 
-    yr_mappings: Dict[str, int]
+    yr_mappings: Dict[int, int]
     mnth_mappings: Dict[str, int]
     season_mappings: Dict[str, int]
     weathersit_mappings: Dict[str, int]

@@ -20,12 +20,11 @@ bikeshare_pipeline=Pipeline([
     ('Weekday_Imputation', WeekdayImputer(config.model_config_data.weekdayimputer_var)),
     ('Weathersit_Imputation', WeathersitImputer(config.model_config_data.weathersitimputer_var)),
     ##==========Mapper======##
-      #  ('map_yr',Mapper(config.model_config_data.yr_var, config.model_config_data.yr_mappings)),
-        ('map_yr',Mapper('yr',{2011: 0, 2012: 1})),
+      ('map_yr',Mapper(config.model_config_data.yr_var, config.model_config_data.yr_mappings)),
         ('map_mnth',Mapper(config.model_config_data.mnth_var,config.model_config_data.mnth_mappings)),
           ('map_season',Mapper(config.model_config_data.season_var, config.model_config_data.season_mappings)),
             ('map_weathersit',Mapper(config.model_config_data.weathersit_var, config.model_config_data.weathersit_mappings)),
-              ('map_holiday',Mapper(config.model_config_data.holiday_var, config.model_config_data.holiday_mappings)),
+               ('map_holiday',Mapper(config.model_config_data.holiday_var, config.model_config_data.holiday_mappings)),
                 ('map_workingday',Mapper(config.model_config_data.workingday_var, config.model_config_data.workingday_mappings)),
                   ('map_hr',Mapper(config.model_config_data.hr_var, config.model_config_data.hr_mappings)),
      # Handling Outlier of temp,atemp,hum,windspeed
