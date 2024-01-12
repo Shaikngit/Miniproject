@@ -23,12 +23,12 @@ def run_training() -> None:
 
     # divide train and test
     X_train, X_test, y_train, y_test = train_test_split(
-        data[config.model_config_data.features],  # predictors
-        data[config.model_config_data.target],
-        test_size=config.model_config_data.test_size,
+        data[config.training_config.features],  # predictors
+        data[config.training_config.target],
+        test_size=config.training_config.test_size,
         # we are setting the random seed here
         # for reproducibility
-        random_state=config.model_config_data.random_state,
+        random_state=config.training_config.random_state,
     )
 
     # Pipeline fitting

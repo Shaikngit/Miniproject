@@ -18,8 +18,8 @@ def validate_inputs(*, input_df: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[d
     """Check model inputs for unprocessable values."""
 
     pre_processed = pre_pipeline_preparation(data_frame=input_df)
-    validated_data = pre_processed[config.model_config_data.features].copy()
-    errors = None
+    validated_data = pre_processed[config.training_config.features].copy()
+    errors: dict[Any, Any] | None = None
 
     try:
         # replace numpy nans so that pydantic can validate
@@ -33,20 +33,20 @@ def validate_inputs(*, input_df: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[d
 
 
 class DataInputSchema(BaseModel):
-    dteday:Optional[str]
+    #dteday:Optional[str]
     season: Optional[str]
     hr: Optional[str]
     holiday: Optional[str]
     weekday: Optional[str]
-    workingday: Optional[int]
+    workingday: Optional[str]
     temp: Optional[float]
     atemp: Optional[float]
     hum: Optional[float]
     windspeed: Optional[float]
     casual: Optional[int]
     registered: Optional[int]
-    cnt: Optional[int]
-    #Fare: Optional[int]
+    #cnt: Optional[int]
+  
 
 
 class MultipleDataInputs(BaseModel):

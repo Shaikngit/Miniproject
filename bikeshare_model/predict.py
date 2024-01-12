@@ -27,7 +27,7 @@ def make_prediction(*,input_data:Union[pd.DataFrame, dict]) -> dict:
     
     
     #validated_data=validated_data.reindex(columns=['Pclass','Sex','Age','Fare', 'Embarked','FamilySize','Has_cabin','Title'])
-    validated_data=validated_data.reindex(columns=config.model_config_data.features)
+    validated_data=validated_data.reindex(columns=config.training_config.features)
     #print(validated_data)
     results = {"predictions": None, "version": _version, "errors": errors}
     
@@ -35,7 +35,7 @@ def make_prediction(*,input_data:Union[pd.DataFrame, dict]) -> dict:
 
     results = {"predictions": predictions,"version": _version, "errors": errors}
     
-    print(results)
+    
     if not errors:
 
         predictions = bikeshare_pipeline.predict(validated_data)

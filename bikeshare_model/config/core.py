@@ -73,7 +73,7 @@ class Config(BaseModel):
     """Master config object."""
 
     app_config: AppConfig
-    model_config_data: ModelConfig
+    training_config: ModelConfig
 
 
 def find_config_file() -> Path:
@@ -104,9 +104,9 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     # specify the data attribute from the strictyaml YAML type.
     _config = Config(
         app_config=AppConfig(**parsed_config.data),
-        model_config_data =ModelConfig(**parsed_config.data),
+        training_config =ModelConfig(**parsed_config.data),
     )
-
+    
     return _config
 
 
